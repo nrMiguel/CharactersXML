@@ -1,0 +1,72 @@
+<table style="">
+            <p>Character: <?php echo (isset($_SESSION['character']['name'])) ? $_SESSION['character']['name'] : 'no data'?></p>
+            <tr>
+                <td>
+                    Energy: <?php echo (isset($_SESSION['character']['energy'])) ? $_SESSION['character']['energy'] : 'no data'?>
+                </td>
+                <td>
+                    Health: <?php echo (isset($_SESSION['character']['health'])) ? $_SESSION['character']['health'] : 'no data'?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Strength: <?php echo (isset($_SESSION['character']['strength'])) ? $_SESSION['character']['strength'] : 'no data'?>
+                </td>
+                <td>
+                    Defense: <?php echo (isset($_SESSION['character']['defense'])) ? $_SESSION['character']['defense'] : 'no data'?>
+                </td>
+            </tr>
+        </table>
+
+
+de index2 cambio la variable del foreach de $_SESSION ya que no me lee las cookies a la variable $characters que contiene tantas líneas como personajes
+foreach($_SESSION['watapo'] as $row){
+                echo '
+                Character: <input type="text" name="name_charOne" value="' . $row[0] . '">
+                <tr>
+                    <td>
+                        Energy: <input type="text" name="energy_charOne" value="' . $row[1] . '">
+                    </td>
+                    <td>
+                        Health: <input type="text" name="health_charOne" value="' . $row[2] . '">
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>
+                        Strength: <input type="text" name="strength_charOne" value="' . $row[3] . '">
+                    </td>
+                    <td>
+                    Defense: <input type="text" name="defense_charOne" value="'. $row[4] . '">
+                    </td>
+                </tr>
+                ';
+            }
+
+Se cambia el uso de simpleXML por DOMDocument como exige la práctica, esto es para la parte de usar un array bidimensional para guardar los estados de cada caracter.
+9.24
+
+
+                echo '<br>------59-------<br>';
+                print_r($characters);
+                
+                for($i=0; $i<sizeof($characters); $i++){
+                    $rowAux = simplexml_load_string($characters[$i]->asXML());
+                    /*Test
+                    echo '<br>------65-------<br>';
+                    print_r($rowAux);
+                    */
+
+
+                    $table[$i][0] = strval($rowAux[0]->xpath('//character/name')[0]);
+                    $table[$i][1] = strval($rowAux[0]->xpath('//character/energy')[0]);
+                    $table[$i][2] = strval($rowAux[0]->xpath('//character/health')[0]);
+                    $table[$i][3] = strval($rowAux[0]->xpath('//character/strenght')[0]);
+                    $table[$i][4] = strval($rowAux[0]->xpath('//character/defense')[0]);
+
+                    /* Test
+                    */
+                    echo '<br>------68-------<br>';
+                    echo "\nname: " . $table[$i][0] . "\nenergy: " . $table[$i][1] . "\nhealt: " . $table[$i][2] . "\nstrenght: " . $table[$i][3] . "\ndefense: " . $table[$i][4];
+                    echo '<br>------70-------<br>';           
+                    /**/
+                }

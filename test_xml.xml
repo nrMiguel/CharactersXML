@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<juego>
+  <character>
+    <name>characterOne</name>
+    <energy>characterEnergyOne</energy>
+    <health>characterHpOne</health>
+    <strenght>characterStrOne</strenght>
+    <defense>characterDefOne</defense>
+  </character>
+  <character>
+    <name>characterTwo</name>
+    <energy>characterEnergyTwo</energy>
+    <health>characterHpTwo</health>
+    <strenght>characterStrTwo</strenght>
+    <defense>characterDefTwo</defense>
+  </character>
+  <character>
+    <name>characterThree</name>
+    <energy>characterEnergyThree</energy>
+    <health>characterHpThree</health>
+    <strenght>characterStrThree</strenght>
+    <defense>characterDefThree</defense>
+  </character>
+</juego>
